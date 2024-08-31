@@ -1,13 +1,51 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation and Promises</title>
+</head>
+<body>
+    <form id="userForm">
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="number" id="age" placeholder="Enter your age">
+        <button type="submit" id="btn">Submit</button>
+    </form>
 
-<html>
-  <head>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
 
-  <body>
-    <!-- write the body here -->
+            // Retrieve the values from the inputs
+            const name = document.getElementById('name').value.trim();
+            const age = document.getElementById('age').value.trim();
 
-    <script type="text/javascript" src="./script.js"></script>
-  </body>
+            // Validate inputs
+            if (!name || !age) {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            // Create a promise that resolves or rejects based on the age
+            const ageCheckPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (age >= 18) {
+                        resolve(`Welcome, ${name}. You can vote.`);
+                    } else {
+                        reject(`Oh sorry, ${name}. You aren't old enough.`);
+                    }
+                }, 4000); // 4 seconds delay
+            });
+
+            // Handle the promise resolution or rejection
+            ageCheckPromise
+                .then((message) => {
+                    alert(message); // Show success message
+                })
+                .catch((message) => {
+                    alert(message); // Show failure message
+                });
+        });
+    </script>
+</body>
 </html>
