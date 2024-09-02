@@ -13,7 +13,7 @@
     </form>
 
     <script>
-        document.getElementById('userForm').addEventListener('submit', function(event) {
+		 document.getElementById('userForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting traditionally
 
             // Retrieve the values from the inputs
@@ -22,7 +22,7 @@
 
             // Validate inputs
             if (!name || !age) {
-                alert("Please enter valid details.");
+                alert("Please enter valid details");
                 return;
             }
 
@@ -46,6 +46,6 @@
                     alert(message); // Show failure message
                 });
         });
-    </script>
+	</script>
 </body>
 </html>
