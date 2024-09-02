@@ -7,7 +7,7 @@
 
             // Validate inputs
             if (!name || !age) {
-                alert("Please enter valid details.");
+                alert("Please enter valid details");
                 return;
             }
 
